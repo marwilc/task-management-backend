@@ -1,3 +1,4 @@
+import { Type } from 'class-transformer';
 import {
   IsDate,
   IsEnum,
@@ -17,8 +18,14 @@ export class CreateTaskDto {
   title: string;
 
   @IsDate()
+  @Type(() => Date)
   @IsOptional()
-  date: string;
+  date: Date;
+
+  @IsString()
+  @IsOptional()
+  @MaxLength(1000)
+  notes: string;
 }
 
 export class UpdateTaskDto {
@@ -29,10 +36,22 @@ export class UpdateTaskDto {
   title: string;
 
   @IsDate()
+  @Type(() => Date)
   @IsOptional()
-  date: string;
+  date: Date;
 
   @IsEnum(TaskStatus)
   @IsOptional()
+  status: TaskStatus;
+
+  @IsString()
+  @IsOptional()
+  @MaxLength(1000)
+  notes: string;
+}
+
+export class DeleteTaskByStatusDto {
+  @IsEnum(TaskStatus)
+  @IsNotEmpty()
   status: TaskStatus;
 }

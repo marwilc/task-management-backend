@@ -1,14 +1,16 @@
 import {
+  Body,
   Controller,
+  Delete,
   Get,
   Param,
   Post,
-  Body,
   Put,
-  Delete,
+  Query,
 } from '@nestjs/common';
-import { TasksService } from './tasks.service';
+import { TaskStatus } from 'generated/prisma/client';
 import { CreateTaskDto, UpdateTaskDto } from './dto/task.dto';
+import { TasksService } from './tasks.service';
 
 @Controller('tasks')
 export class TasksController {
@@ -37,5 +39,17 @@ export class TasksController {
   @Delete(':id')
   delete(@Param('id') id: string) {
     return this.tasksService.delete(id);
+  }
+
+  // delete all tasks with status DONE
+  // delete: /tasks?status=DONE
+  @Delete()
+  deleteByStatus(@Query('status') status: TaskStatus) {
+    return this.tasksService.deleteByStatus(status);
+  }
+
+  @Put(':id/cycle')
+  cycleTaskStatus(@Param('id') id: string) {
+    return this.tasksService.cycleTaskStatus(id);
   }
 }

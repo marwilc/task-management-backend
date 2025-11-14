@@ -3,6 +3,7 @@ export class Task {
   title: string;
   status: TaskStatus;
   date: Date;
+  notes: string;
   createdAt: Date;
   updatedAt: Date;
 }
