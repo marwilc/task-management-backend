@@ -91,6 +91,15 @@ Create a `.env` file in the root directory:
 # Database
 DATABASE_URL="postgresql://user:password@localhost:5432/database_name?schema=public"
 
+# Docker Database Configuration
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=your_postgres_password
+POSTGRES_DB=task_management_db
+
+# Docker pgAdmin Configuration
+PGADMIN_EMAIL=admin@admin.com
+PGADMIN_PASSWORD=your_pgadmin_password
+
 # Application
 PORT=3001
 CLIENT_URL=http://localhost:3000
@@ -116,6 +125,11 @@ npx prisma migrate dev
 | Variable | Description | Default | Required |
 |----------|-------------|---------|----------|
 | `DATABASE_URL` | PostgreSQL connection string | - | Yes |
+| `POSTGRES_USER` | PostgreSQL username | postgres | No |
+| `POSTGRES_PASSWORD` | PostgreSQL password | - | Yes (for Docker) |
+| `POSTGRES_DB` | PostgreSQL database name | task_management_db | No |
+| `PGADMIN_EMAIL` | pgAdmin login email | admin@admin.com | No |
+| `PGADMIN_PASSWORD` | pgAdmin login password | - | Yes (for Docker) |
 | `PORT` | Server port | 3001 | No |
 | `CLIENT_URL` | Frontend URL for CORS | http://localhost:3000 | No |
 | `OPENAI_API_KEY` | OpenAI API key for suggestions | - | Yes (for suggestions) |
