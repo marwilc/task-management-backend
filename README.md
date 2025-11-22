@@ -89,7 +89,7 @@ Create a `.env` file in the root directory:
 
 ```env
 # Database
-DATABASE_URL="postgresql://postgres:admin@localhost:5432/task_management_db?schema=public"
+DATABASE_URL="postgresql://user:password@localhost:5432/database_name?schema=public"
 
 # Application
 PORT=3001
@@ -419,16 +419,11 @@ docker-compose down
 ### Access pgAdmin
 
 - URL: http://localhost:5050
-- Email: `admin@admin.com`
-- Password: `admin`
+- Configure your credentials in `docker-compose.yml`
 
 ### Connect to Database
 
-- Host: `localhost`
-- Port: `5432`
-- Database: `task_management_db`
-- User: `postgres`
-- Password: `admin`
+Configure your database connection using the credentials defined in your `docker-compose.yml` file and `.env` file.
 
 ## 📝 License
 
